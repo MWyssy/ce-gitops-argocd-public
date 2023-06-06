@@ -32,7 +32,7 @@ To do this firstly create a separate [Kubernetes namespace](https://kubernetes.i
 kubectl create namespace argocd
 ```
 
-Then apply the YML files associated with Argo. The command below just applies a YAML file called **install.yaml** that contains all the various services, deployments for ArgoCD.
+Then apply the YAML files associated with Argo. The command below just applies a YAML file called [install.yaml](https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml) that contains all the various services, deployments for ArgoCD.
 
 ```
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -57,6 +57,73 @@ argocd-repo-server-96b577c5-8b6b8                   1/1     Running   0         
 argocd-server-7c7b5568cc-b85v8                      1/1     Running   0          78s
 ```
 
+### Obtaining the ArgoCD password
+
+To log in to the ArgoCD user interface you will need to obtain the password.
+
+Run the following command to obtain your admin password:
+
+**🗒️ NOTE:** If the password is printed with a percent (%) sign you can ignore this character. The percent just indicates the end of line
+
+**Unix**
+
+```
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+
+**Windows**
+
+Windows users running Powershell will get an error when running the above command to get the ArgoCD password due to Powershell having to decode using base64 in a different way.
+
+To get around this, Windows users will need to run this command to get the string into a variable
+
+```
+$argocdpass = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
+```
+
+Then just type the variable name to get the contents and add that into the command below to get your ArgoCD password:
+
+```
+[Text.Encoding]::Utf8.GetString([Convert]::FromBase64String('**paste argocd pass output in here**'))
+```
+
+Take note of this password, you will use it shortly
+
+### Port forwarding to access ArgoCD
+
+Now you will use Kubernetes port forwarding to access the user interface
+
+```
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
+### Logging into ArgoCD
+
+Now open up your browser and navigate to [http://localhost:8080](http://localhost:8080)
+
+Your browser will warn you about the certificate, choose Advanced and **Proceed anyway**
+
+You should then see the ArgoCD log in page
+
+Enter the username **admin**
+
+Enter the password received in the previous step and log in
+
+### Setting up your repository
+
+This repository is private within your GitHub account so in order for ArgoCD to be able to access it we need to configure ArgoCD with access.
+
+To do this we will use a personal access token and configure that with ArgoCD.
+
+Follow the video below to create your personal access token and utilise it with ArgoCD.
+
+JAMES TO COMPLETE
+
+
+
+
+More detail on this stage can also be found on the [ArgoCD private repos documentation](https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/)
+
 ## Extension exercise
 
 ### Your own image and rolling out a change
@@ -69,7 +136,7 @@ To help guide you, you will need:
 
 * Make sure you have pushed your image to your own container registry. You could do this with CircleCI if you have completed that task
 
-* Make sure ArgoCD port forwarding is enabled, log in to ArgoCD and set up a new project
+* Make sure ArgoCD port forwarding is enabled, log in to ArgoCD and set up a **New App**
 
 * Point that project at the **my-app** directory
 
