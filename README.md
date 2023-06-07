@@ -117,7 +117,7 @@ To do this we will use a personal access token and configure that with ArgoCD.
 
 Follow the video below to create your personal access token and utilise it with ArgoCD.
 
-JAMES TO COMPLETE
+[Video on creating personal access token](https://cloud-engineering-learners-media.s3.eu-west-2.amazonaws.com/argocd/argo_personal_token.mp4)
 
 More detail on this stage can also be found on the [ArgoCD private repos documentation](https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/)
 
@@ -129,7 +129,7 @@ You can see the YAML files that ArgoCD will monitor within the [nginx-argo-examp
 
 Follow the video below to setup your application
 
-JAMES TO COMPLETE
+[Video on setting up ArgoCD app](https://cloud-engineering-learners-media.s3.eu-west-2.amazonaws.com/argocd/argocd_app_setup.mp4)
 
 ### Validating the app is running
 
@@ -141,7 +141,7 @@ Let's now go all GitOps and make a change via Git that Argo will observe and syn
 
 In this video, we'll show an example of how to make a change in git and how that is reflected in ArgoCD.
 
-JAMES TO COMPLETE
+[Video on seeing change reflected in ArgoCD](https://cloud-engineering-learners-media.s3.eu-west-2.amazonaws.com/argocd/argocd_state_sync.mp4)
 
 ## Extension exercise
 
