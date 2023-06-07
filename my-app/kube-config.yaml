@@ -32,6 +32,6 @@ spec:
     app: java-demo-app
   ports:
     - protocol: TCP
-      port: 3000
+      port: 3050
       targetPort: 8080
   type: NodePort
