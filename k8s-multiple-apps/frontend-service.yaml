@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws-bookstore-frontend
+spec:
+  selector:
+    app: aws-bookstore-frontend
+    tier: frontend
+  ports:
+    - protocol: TCP
+      name: frontend-service
+      port: 80
+      targetPort: 80
+  type: NodePort

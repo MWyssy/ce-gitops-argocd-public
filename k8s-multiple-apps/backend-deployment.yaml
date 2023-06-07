@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-bookstore-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws-bookstore-backend
+  template:
+    metadata:
+      labels:
+        app: aws-bookstore-backend
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: aws-bookstore-backend
+          image: 529351201608.dkr.ecr.eu-west-2.amazonaws.com/bookstore-backend:1.1
+          ports:
+            - name: http
+              containerPort: 5000
