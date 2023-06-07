@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-demo-app
+  template:
+    metadata:
+      labels:
+        app: java-demo-app
+    spec:
+      containers:
+        - name: java-demo-app
+          image: public.ecr.aws/f2m3w5c9/java-demo-app:23
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-demo-app
+spec:
+  selector:
+    app: java-demo-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
