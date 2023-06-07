@@ -11,4 +11,4 @@ spec:
       name: backend-service
       port: 5000
       targetPort: 5000
-  type: NodePort
+  type: Loadbalancer
