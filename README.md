@@ -119,10 +119,29 @@ Follow the video below to create your personal access token and utilise it with 
 
 JAMES TO COMPLETE
 
-
-
-
 More detail on this stage can also be found on the [ArgoCD private repos documentation](https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/)
+
+### Setting up the app
+
+Next let's configure ArgoCD with a brand new application, in our case it will be that trusty NGiNX container.
+
+You can see the YAML files that ArgoCD will monitor within the [nginx-argo-example](./nginx-argo-example/) directory.
+
+Follow the video below to setup your application
+
+JAMES TO COMPLETE
+
+### Validating the app is running
+
+If you get nice green ticks of the container running, try `kubectl get pods` locally to see the NGiNX container running
+
+### Making a change
+
+Let's now go all GitOps and make a change via Git that Argo will observe and synchronise across your cluster.
+
+In this video, we'll show an example of how to make a change in git and how that is reflected in ArgoCD.
+
+JAMES TO COMPLETE
 
 ## Extension exercise
 
@@ -130,11 +149,11 @@ More detail on this stage can also be found on the [ArgoCD private repos documen
 
 You'll see there is a folder called **my-app** and the YAML files in there are empty.
 
-Try populating those files in order to deploy one of your own containers to your cluster via ArgoCD.
+Try populating those files in order to deploy one of your own containers, such as the Java Spring boot app, to your cluster via ArgoCD.
 
 To help guide you, you will need:
 
-* Make sure you have pushed your image to your own container registry. You could do this with CircleCI if you have completed that task
+* Make sure you have pushed your image to your own container registry. You could do this with CircleCI if you have completed that task.
 
 * Make sure ArgoCD port forwarding is enabled, log in to ArgoCD and set up a **New App**
 
