@@ -4,7 +4,7 @@
 
 It's time to go all GitOps and utilise [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) to implement a GitOps workflow.
 
-In this exercise you will deploy ArgoCD to your Kubernetes cluster so you'll have ArgoCD running in your cluster. 
+In this exercise you will deploy ArgoCD to your Kubernetes cluster so you'll have ArgoCD running in your cluster.
 
 Once deployed you will configure ArgoCD to monitor a repository (this one) and decide whether to make changes to your cluster.
 
@@ -12,7 +12,7 @@ Once deployed you will configure ArgoCD to monitor a repository (this one) and d
 
 ### Starting kubernetes
 
-You'll use local kubernetes for this one. 
+You'll use local kubernetes for this one.
 
 Start up your local version of kubernetes and make sure you can connect to it using `kubectl`
 
@@ -61,7 +61,7 @@ argocd-server-7c7b5568cc-b85v8                      1/1     Running   0         
 
 To log in to the ArgoCD user interface you will need to obtain the password.
 
-Run the following command to obtain your admin password:
+Run the following command to obtain your admin password, once **all** of your pods are ready and running:
 
 **🗒️ NOTE:** If the password is printed with a percent (%) sign you can ignore this character. The percent just indicates the end of line
 
@@ -153,11 +153,11 @@ Try populating those files in order to deploy one of your own containers, such a
 
 To help guide you, you will need:
 
-* Make sure you have pushed your image to your own container registry. You could do this with CircleCI if you have completed that task.
+- Make sure you have pushed your image to your own container registry. You could do this with CircleCI if you have completed that task.
 
-* Make sure ArgoCD port forwarding is enabled, log in to ArgoCD and set up a **New App**
+- Make sure ArgoCD port forwarding is enabled, log in to ArgoCD and set up a **New App**
 
-* Point that project at the **my-app** directory
+- Point that project at the **my-app** directory
 
 ## Submission process
 
